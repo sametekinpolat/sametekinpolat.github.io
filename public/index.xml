@@ -16,17 +16,17 @@
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac fringilla eros, non posuere augue. Nunc convallis luctus magna. Morbi nec odio a ex placerat finibus. Mauris ultricies mattis bibendum.&lt;/p&gt;&#xA;&lt;h2 id=&#34;experience&#34;&gt;Experience&lt;/h2&gt;&#xA;&lt;p&gt;Praesent aliquet erat libero, non laoreet ante iaculis ut. Vestibulum semper id ex sed sodales. Nulla vehicula bibendum mauris eu malesuada. Nulla auctor enim sit amet varius vestibulum. Donec aliquam mollis eros sed consectetur. Aliquam quis mauris eleifend, lobortis enim quis, tempus justo.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>First Project Post</title>
-      <link>http://localhost:1313/projects/project-1/</link>
-      <pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-1/</guid>
-      <description>Short Summary</description>
-    </item>
-    <item>
-      <title>My First Blog Post</title>
+      <title>Coming Soon</title>
       <link>http://localhost:1313/blog/my-first-post/</link>
       <pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/my-first-post/</guid>
+      <description>Short Summary</description>
+    </item>
+    <item>
+      <title>Coming Soon</title>
+      <link>http://localhost:1313/projects/project-1/</link>
+      <pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/project-1/</guid>
       <description>Short Summary</description>
     </item>
   </channel>

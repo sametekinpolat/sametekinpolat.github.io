@@ -1,5 +1,5 @@
 ---
-title: "My First Blog Post"
+title: "Coming Soon"
 date: 2025-06-23
 draft: false
 tags: ["introduction", "blog"]
