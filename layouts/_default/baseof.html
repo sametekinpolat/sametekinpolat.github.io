@@ -54,9 +54,5 @@
 
     {{ partial "footer.html" . }}
 
-    <!-- Oneko (cat) animation -->
-    {{ $oneko := resources.Get "js/oneko.js" }}
-    {{ $onekoGif := resources.Get "js/oneko.gif" }}
-    <script src="{{ $oneko.RelPermalink }}" data-cat="{{ $onekoGif.RelPermalink }}"></script>
 </body>
 </html> 
