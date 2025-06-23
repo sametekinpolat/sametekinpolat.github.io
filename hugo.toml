@@ -1,0 +1,43 @@
+baseURL = 'https://sametekinpolat.com'
+languageCode = 'en-us'
+title = 'Samet Ekin Polat'
+
+# Enable syntax highlighting
+[markup]
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = true
+
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = 'Blog'
+    url = '/blog/'
+    weight = 2
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 3
+  [[menu.main]]
+    name = 'Projects'
+    url = '/projects/'
+    weight = 4
+  [[menu.main]]
+    name = 'CV'
+    url = '/cv/'
+    weight = 5
+  [[menu.main]]
+    name = 'Album'
+    url = '/album/'
+    weight = 6
+
+
+[params]
+  description = "description"
+  author = "Your Name"
+  github = "https://github.com/SametEkinPolat"
+  linkedin = "https://linkedin.com/in/"
+  email = "sametekinpolat@hotmail.com"

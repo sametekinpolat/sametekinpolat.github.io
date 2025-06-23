@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <h1 class="title">{{ .Title }}</h1>
+                {{ if .Date }}
+                <p class="subtitle is-6">
+                    Published on {{ .Date.Format "January 2, 2006" }}
+                </p>
+                {{ end }}
+                
+                {{ if .Params.tags }}
+                <div class="tags are-medium mb-5">
+                    {{ range .Params.tags }}
+                    <span class="tag is-info is-light">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+                
+                <div class="content">
+                    {{ .Content }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }} 

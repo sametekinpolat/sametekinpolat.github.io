@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name</title>
+    
+    <link rel="stylesheet" href="/css/bulma.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+
+        main {
+            flex: 1;
+
+        }
+        .menu-label {
+            color: #7a7a7a;
+            font-size: 0.9em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .menu-list a {
+            border-radius: 8px;
+        }
+        .menu-list a.is-active {
+            background-color: #485fc7;
+        }
+        .box {
+            border-radius: 8px;
+            border: 2px solid #000000;
+            box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+    
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+            });
+        });
+    }
+});
+</script> 
+    
+    <main>
+        
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <h1 class="title">Home</h1>
+                
+                <p class="subtitle is-6">
+                    Published on March 19, 2024
+                </p>
+                
+                
+                
+                
+                <div class="content">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut velit, rerum nobis omnis unde sunt veniam repellat perspiciatis accusantium dolorem consequatur molestiae qui autem incidunt maxime quidem dolores fuga exercitationem.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            © 2025 Your Name. All rights reserved.
+        </p>
+        <div class="level">
+            <div class="level-item">
+                <div class="buttons are-medium">
+                    <a href="https://github.com/yourusername" class="button is-ghost">
+                        <span class="icon">
+                            <i class="fab fa-github"></i>
+                        </span>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" class="button is-ghost">
+                        <span class="icon">
+                            <i class="fab fa-linkedin"></i>
+                        </span>
+                    </a>
+                    <a href="https://twitter.com/yourusername" class="button is-ghost">
+                        <span class="icon">
+                            <i class="fab fa-twitter"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer> 
+</body>
+</html> 

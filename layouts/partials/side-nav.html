@@ -1,0 +1,35 @@
+<div class="box">
+    <aside class="menu">
+
+
+        <!-- Navigation Links -->
+        <p class="menu-label">Navigation</p>
+        <ul class="menu-list">
+            <li><a href="{{ .Site.BaseURL }}" class="{{ if .IsHome }}is-active{{ end }}">Home</a></li>
+            <li><a href="/blog" class="{{ if eq .Section "blog" }}is-active{{ end }}">Blog</a></li>
+            <li><a href="/about" class="{{ if and .File (eq .File.Path "about.md") }}is-active{{ end }}">About</a></li>
+            <li><a href="/projects" class="{{ if eq .Section "projects" }}is-active{{ end }}">My Projects</a></li>
+            <li><a href="/cv" class="{{ if and .File (eq .File.Path "cv.md") }}is-active{{ end }}">Download CV <i class="fa-solid fa-download"></i></a></li>
+            <li><a href="#" class="">Album</a></li>
+
+        </ul>
+        <!-- Social Links -->
+        <p class="menu-label mt-6">Connect</p>
+        <div class="buttons are-small is-centered">
+            <a href="{{ .Site.Params.github }}" class="button is-dark" target="_blank">
+                <span class="icon"><i class="fab fa-github"></i></span>
+            </a>
+            <a href="{{ .Site.Params.linkedin}}" class="button is-info" target="_blank">
+                <span class="icon"><i class="fab fa-linkedin"></i></span>
+            </a>
+        </div>
+
+    </aside>
+</div> 
+
+<div class="box">
+    <script src="https://recentfm.rknight.me/now.js?u=spolat0&nomoji=true"></script>
+    <div class="recent-played">
+        <p class="recent-played-track"></p>
+    </div>
+</div>

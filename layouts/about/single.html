@@ -1,0 +1,56 @@
+{{ define "main" }}
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <!-- Main Content Column (80%) -->
+            <div class="column is-8">
+                <div class="box">
+                    <!-- Profile Section -->
+                    <div class="has-text-centered mb-6">
+                        <figure class="image is-128x128 is-inline-block mb-4">
+                            <!-- Replace with your profile picture -->
+                            <img class="is-rounded" src="https://placehold.co/128x128">
+                        </figure>
+                        <h1 class="title is-2">{{ .Title }}</h1>
+                        <p class="subtitle is-4">Software Developer & Tech Enthusiast</p>
+                    </div>
+
+                    <!-- About Content -->
+                    <div class="content is-medium">
+                        {{ .Content }}
+                    </div>
+                    <!-- Contact Section -->
+                    <div class="mt-6">
+                        <h2 class="title is-3">Get in Touch</h2>
+                        <div class="buttons are-medium is-centered">
+                            <a href="mailto:{{ .Site.Params.email }}" class="button is-primary">
+                                <span class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span>Email</span>
+                            </a>
+                            <a href="{{ .Site.Params.linkedin }}" class="button is-info">
+                                <span class="icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </span>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="{{ .Site.Params.github }}" class="button is-dark">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Navigation Column (20%) -->
+            <div class="column is-3">
+                {{ partial "side-nav" . }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }} 

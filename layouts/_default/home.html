@@ -1,0 +1,79 @@
+{{ define "main" }}
+
+    <!-- Oneko (cat) animation -->
+    {{ $oneko := resources.Get "js/oneko.js" }}
+    {{ $onekoGif := resources.Get "js/oneko.gif" }}
+    <script src="{{ $oneko.RelPermalink }}" data-cat="{{ $onekoGif.RelPermalink }}"></script>
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <!-- Main Content Column (80%) -->
+            <div class="column is-8">
+                <div>
+
+                    <!-- Welcome Section -->
+                    <section class="section box mb-6">
+                            <h1 class="title">Welcome to sametekinpolat.com</h1>
+                        <div class="media">
+                            <figure class="media-left">
+                                <p class="image is-128x128">
+                                    <img class="is-rounded" src="https://placehold.co/128x128">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <h1 class="title is-4 mt-2">Samet Ekin Polat</h1>
+                                    {{.Content}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Latest Posts Section -->
+                    <section class="mb-6 box">
+                        <h2 class="title is-3">Latest Posts</h2>
+                        <div class="columns is-multiline">
+                            {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+                            <div class="column is-full">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <p class="title is-4">
+                                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                        </p>
+                                        <p class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </section>
+
+                                        <!-- Latest Posts Section -->
+                    <section class="mb-6 box">
+                        <h2 class="title is-3">Latest Posts</h2>
+                        <div class="columns is-multiline">
+                            {{ range first 3 (where .Site.RegularPages "Section" "projects") }}
+                            <div class="column is-full">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <p class="title is-4">
+                                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                        </p>
+                                        <p class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+            <!-- Side Navigation Column (20%) -->
+            <div class="column is-3">
+                {{ partial "side-nav" . }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }} 
