@@ -41,3 +41,8 @@ title = 'Samet Ekin Polat'
   github = "https://github.com/SametEkinPolat"
   linkedin = "https://linkedin.com/in/"
   email = "sametekinpolat@hotmail.com"
+
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
