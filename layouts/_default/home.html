@@ -1,19 +1,31 @@
 {{ define "main" }}
+    <!-- Add custom styles for home page -->
+    {{ $bgImage := resources.Get "images/bg.jpg" }}
+    <style>
+        .home-background {
+            background-image: url('{{ $bgImage.RelPermalink }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+    </style>
 
     <!-- Oneko (cat) animation -->
     {{ $oneko := resources.Get "js/oneko.js" }}
     {{ $onekoGif := resources.Get "js/oneko.gif" }}
     <script src="{{ $oneko.RelPermalink }}" data-cat="{{ $onekoGif.RelPermalink }}"></script>
-<section class="section">
+
+<section class="section home-background">
     <div class="container">
         <div class="columns is-centered">
             <!-- Main Content Column (80%) -->
             <div class="column is-8">
                 <div>
-
                     <!-- Welcome Section -->
                     <section class="section box mb-6">
-                            <h1 class="title">Welcome to sametekinpolat.com</h1>
+                        <h1 class="title">Welcome to sametekinpolat.com</h1>
                         <div class="media">
                             <figure class="media-left">
                                 <p class="image is-128x128">
@@ -28,6 +40,7 @@
                             </div>
                         </div>
                     </section>
+
                     <!-- Latest Posts Section -->
                     <section class="mb-6 box">
                         <h2 class="title is-3">Latest Posts</h2>
@@ -47,11 +60,11 @@
                         </div>
                     </section>
 
-                                        <!-- Latest Posts Section -->
+                    <!-- Latest Projects Section -->
                     <section class="mb-6 box">
-                        <h2 class="title is-3">Latest Posts</h2>
+                        <h2 class="title is-3">Projects</h2>
                         <div class="columns is-multiline">
-                            {{ range first 3 (where .Site.RegularPages "Section" "projects") }}
+                            {{ range first 5 (where .Site.RegularPages "Section" "projects") }}
                             <div class="column is-full">
                                 <div class="card">
                                     <div class="card-content">
@@ -65,7 +78,6 @@
                             {{ end }}
                         </div>
                     </section>
-
                 </div>
             </div>
 
