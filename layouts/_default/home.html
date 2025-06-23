@@ -18,7 +18,7 @@
     <script src="{{ $oneko.RelPermalink }}" data-cat="{{ $onekoGif.RelPermalink }}"></script>
 
 <section class="section home-background">
-    <div class="container">
+    <div class="container is-compact">
         <div class="columns is-centered">
             <!-- Main Content Column (80%) -->
             <div class="column is-8">
@@ -47,7 +47,7 @@
                         <div class="columns is-multiline">
                             {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
                             <div class="column is-full">
-                                <div class="card">
+                                <div class="">
                                     <div class="card-content">
                                         <p class="title is-4">
                                             <a href="{{ .Permalink }}">{{ .Title }}</a>
@@ -66,7 +66,7 @@
                         <div class="columns is-multiline">
                             {{ range first 5 (where .Site.RegularPages "Section" "projects") }}
                             <div class="column is-full">
-                                <div class="card">
+                                <div class="">
                                     <div class="card-content">
                                         <p class="title is-4">
                                             <a href="{{ .Permalink }}">{{ .Title }}</a>

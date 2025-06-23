@@ -9,8 +9,8 @@
             <li><a href="/blog" class="{{ if eq .Section "blog" }}is-active{{ end }}">Blog</a></li>
             <li><a href="/about" class="{{ if and .File (eq .File.Path "about.md") }}is-active{{ end }}">About</a></li>
             <li><a href="/projects" class="{{ if eq .Section "projects" }}is-active{{ end }}">My Projects</a></li>
-            <li><a href="/cv" class="{{ if and .File (eq .File.Path "cv.md") }}is-active{{ end }}">Download CV <i class="fa-solid fa-download"></i></a></li>
-            <li><a href="#" class="">Album</a></li>
+            <li><a href="#" class="">Download CV <i class="fa-solid fa-download"></i> <span class="is-italic">(Coming Soon)</span></a></li>
+            <li><a href="#" class="">Album <span class="is-italic">(Coming Soon)</span></a></li>
 
         </ul>
         <!-- Social Links -->
