@@ -1,1 +1,21 @@
 User-agent: *
+
+Disallow: /about/
+
+Disallow: /blog/
+
+Disallow: /tags/blog/
+
+Disallow: /blog/my-first-post/
+
+Disallow: /projects/project-1/
+
+Disallow: /tags/introduction/
+
+Disallow: /projects/
+
+Disallow: /tags/
+
+Disallow: /
+
+Disallow: /categories/
