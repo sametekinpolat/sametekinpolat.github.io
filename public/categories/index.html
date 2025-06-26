@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -44,6 +44,8 @@
     </style>
 </head>
 <body>
+    <script data-goatcounter="https://spolat.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
     <script src="https://kit.fontawesome.com/f10d535b49.js" crossorigin="anonymous"></script>
 
     <header>
@@ -95,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         <p class="menu-label">Navigation</p>
         <ul class="menu-list">
-            <li><a href="http://localhost:1313/" class="">Home</a></li>
+            <li><a href="https://sametekinpolat.com/" class="">Home</a></li>
             <li><a href="/blog" class="">Blog</a></li>
             <li><a href="/about" class="">About</a></li>
             <li><a href="/projects" class="">My Projects</a></li>
@@ -118,57 +120,68 @@ document.addEventListener('DOMContentLoaded', () => {
 </div> 
 
 <div id="now-playing">
-  <p>Loading current song...</p>
+  <div class="box">
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img id="album-image" src="" alt="Album Cover">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong id="song-title">Title</strong> by <em id="song-artist">Artist</em><br>
+            <small id="song-album">Album</small><br>
+            <span id="play-status" class="has-text-grey">Loading...</span><br>
+            <a id="song-link" href="#" target="_blank">Open in Spotify</a>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
 </div>
 
 <script>
-function timeAgo(timestamp) {
-  const seconds = Math.floor((Date.now() - timestamp) / 1000);
-  if (seconds < 60) return `${seconds} seconds ago`;
-  const minutes = Math.floor(seconds / 60);
-  return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
-}
+let lastTrackId = null;
 
 async function fetchNowPlaying() {
-  const res = await fetch('https://lastfmapi.netlify.app/.netlify/functions/now-playing');
-  if (res.status === 204) {
-    document.getElementById('now-playing').innerHTML = `<p>Nothing playing</p>`;
-    return;
+  try {
+    const res = await fetch('https://lastfmapi.netlify.app/.netlify/functions/now-playing');
+    if (res.status === 204) {
+      document.getElementById('play-status').textContent = 'Paused';
+      document.getElementById('play-status').className = 'has-text-grey';
+      return;
+    }
+
+    const data = await res.json();
+
+    
+    if (data.title + data.artist !== lastTrackId) {
+      lastTrackId = data.title + data.artist;
+
+      document.getElementById('song-title').textContent = data.title;
+      document.getElementById('song-artist').textContent = data.artist;
+      document.getElementById('song-album').textContent = data.album;
+      document.getElementById('album-image').src = data.image;
+      document.getElementById('song-link').href = data.url;
+    }
+
+    document.getElementById('play-status').textContent = data.nowPlaying ? 'Now Playing' : 'Paused';
+    document.getElementById('play-status').className = data.nowPlaying ? 'has-text-success' : 'has-text-grey';
+
+  } catch (err) {
+    console.error('Error fetching now-playing:', err);
+    document.getElementById('play-status').textContent = 'Error loading track';
+    document.getElementById('play-status').className = 'has-text-danger';
   }
-
-  const data = await res.json();
-  document.getElementById('now-playing').innerHTML = `
-    <div class="box">
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="${data.image}" alt="Album Cover">
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>${data.title}</strong> by <em>${data.artist}</em><br>
-              <small>${data.album}</small><br>
-              ${data.nowPlaying
-                ? '<span class="has-text-success">Now Playing</span>'
-                : `<span class="has-text-grey">Played ${timeAgo(data.startedAt)}</span>`}
-              <br>
-              <a href="${data.url}" target="_blank">Open in Spotify</a>
-            </p>
-          </div>
-        </div>
-      </article>
-    </div>
-  `;
 }
-  
-  fetchNowPlaying();
 
-  
-  setInterval(fetchNowPlaying, 6000);
+
+fetchNowPlaying();
+
+
+setInterval(fetchNowPlaying, 20000);
 </script>
-
 
 
 
