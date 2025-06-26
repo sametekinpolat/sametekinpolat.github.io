@@ -148,63 +148,60 @@ document.addEventListener('DOMContentLoaded', () => {
     </aside>
 </div> 
 
-<div class="box">
-
-<div id="now-playing" class="card" style="max-width: 400px; margin: 2rem auto;">
-  <div class="card-content has-text-centered">
-    <p class="title is-4">🎧 Loading...</p>
-  </div>
+<div id="now-playing">
+  <p>Loading current song...</p>
 </div>
 
-
 <script>
-  fetch('https://lastfmapi.netlify.app/.netlify/functions/now-playing')
-    .then(r => r.json())
-    .then(data => {
-      const container = document.getElementById('now-playing');
+function timeAgo(timestamp) {
+  const seconds = Math.floor((Date.now() - timestamp) / 1000);
+  if (seconds < 60) return `${seconds} seconds ago`;
+  const minutes = Math.floor(seconds / 60);
+  return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+}
 
-      if (!data || !data.title) {
-        container.innerHTML = `
-          <div class="card-content has-text-centered">
-            <p class="title is-5">🎧 No recent track found</p>
-          </div>
-        `;
-        return;
-      }
+async function fetchNowPlaying() {
+  const res = await fetch('https://lastfmapi.netlify.app/.netlify/functions/now-playing');
+  if (res.status === 204) {
+    document.getElementById('now-playing').innerHTML = `<p>Nothing playing</p>`;
+    return;
+  }
 
-      container.innerHTML = `
-        <div class="card-image">
-          <figure class="image is-square">
-            <img src="${data.image}" alt="Album Art">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content has-text-centered">
-              <p class="title is-5">${data.title}</p>
-              <p class="subtitle is-6">${data.artist}</p>
-            </div>
+  const data = await res.json();
+  document.getElementById('now-playing').innerHTML = `
+    <div class="box">
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="${data.image}" alt="Album Cover">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>${data.title}</strong> by <em>${data.artist}</em><br>
+              <small>${data.album}</small><br>
+              ${data.nowPlaying
+                ? '<span class="has-text-success">Now Playing</span>'
+                : `<span class="has-text-grey">Played ${timeAgo(data.startedAt)}</span>`}
+              <br>
+              <a href="${data.url}" target="_blank">Open in Spotify</a>
+            </p>
           </div>
+        </div>
+      </article>
+    </div>
+  `;
+}
+  
+  fetchNowPlaying();
 
-          <div class="content has-text-centered">
-            <p><strong>Album:</strong> ${data.album}</p>
-            <p><strong>${data.nowPlaying ? '▶️ Now Playing' : '🕒 Last Played'}:</strong> ${data.date || 'Unknown'}</p>
-            <p><a href="${data.url}" target="_blank">Listen on Last.fm</a></p>
-          </div>
-        </div>
-      `;
-    })
-    .catch(err => {
-      console.error('Error fetching now-playing:', err);
-      document.getElementById('now-playing').innerHTML = `
-        <div class="card-content has-text-centered">
-          <p class="title is-5">⚠️ Error fetching track</p>
-        </div>
-      `;
-    });
+  
+  setInterval(fetchNowPlaying, 6000);
 </script>
 
-</div>  
+
+
 
 <div class="box">
     <div style="max-width:980px;margin:5px auto 10px auto;font-size:14px;"><div style="position:relative;padding: 0 0 67% 0;height:0;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="//www.fla-shop.com/visited-countries/embed/?st=BE%2CDE%2CES%2CFR%2CGR%2CNL%2CTR&vc=1ca032&uc=b3c3ca&hc=40bfa6&bc=3d3846&ss=on" frameborder="0" scrolling="no"></iframe></div><a href="https://www.fla-shop.com/visited-countries/">Create your own map</a></div>    
