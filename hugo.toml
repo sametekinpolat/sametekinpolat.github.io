@@ -2,6 +2,8 @@ baseURL = 'https://sametekinpolat.com'
 languageCode = 'en-us'
 title = 'Samet Ekin Polat'
 enableRobotsTXT = true
+enableEmoji = true
+
 
 
 # Enable syntax highlighting

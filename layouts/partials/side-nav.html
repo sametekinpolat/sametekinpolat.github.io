@@ -39,7 +39,7 @@
         <div class="content">
           <p>
             <strong id="song-title">Title</strong> by <em id="song-artist">Artist</em><br>
-            <small id="song-album">Album</small><br>
+            <!-- <small id="song-album">Album</small><br> -->
             <span id="play-status" class="has-text-grey">Loading...</span><br>
             <a id="song-link" href="#" target="_blank">Open in Spotify</a>
           </p>
@@ -58,6 +58,7 @@ async function fetchNowPlaying() {
     if (res.status === 204) {
       document.getElementById('play-status').textContent = 'Paused';
       document.getElementById('play-status').className = 'has-text-grey';
+      document.getElementById('album-image').src = 'https://placehold.co/400?text=?';
       return;
     }
 
@@ -69,7 +70,7 @@ async function fetchNowPlaying() {
 
       document.getElementById('song-title').textContent = data.title;
       document.getElementById('song-artist').textContent = data.artist;
-      document.getElementById('song-album').textContent = data.album;
+/*    document.getElementById('song-album').textContent = data.album; */
       document.getElementById('album-image').src = data.image;
       document.getElementById('song-link').href = data.url;
     }
